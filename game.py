@@ -2,10 +2,8 @@ import pygame
 import random
 import os
 
-# Initialize Pygame
 pygame.init()
 
-# Screen setup
 WIDTH, HEIGHT = 600, 500
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Catch the Ball Game")
@@ -13,14 +11,12 @@ pygame.display.set_caption("Catch the Ball Game")
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
-# Load images
 ASSETS_DIR = os.path.join(os.path.dirname(__file__), 'assets')
 ball_img = pygame.image.load(os.path.join(ASSETS_DIR, 'ball.png'))
 basket_img = pygame.image.load(os.path.join(ASSETS_DIR, 'basket.png'))
 ball_img = pygame.transform.scale(ball_img, (40, 40))
 basket_img = pygame.transform.scale(basket_img, (100, 60))
 
-# Font and clock
 font = pygame.font.SysFont(None, 36)
 clock = pygame.time.Clock()
 
@@ -50,18 +46,15 @@ def game_loop():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
-        # Move basket
+                
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and basket_x > 0:
             basket_x -= basket_speed
         if keys[pygame.K_RIGHT] and basket_x < WIDTH - 100:
             basket_x += basket_speed
 
-        # Move ball
         ball_y += ball_speed
-
-        # Collision
+        
         if basket_y < ball_y + 40 < basket_y + 10 and basket_x < ball_x < basket_x + 100:
             score += 1
             ball_y = 0
