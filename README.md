@@ -10,3 +10,7 @@ A simple game made with Python and Pygame. Move the basket left and right to cat
 Install Pygame:
 ```bash
 pip install pygame
+
+## How to run
+
+python game.py
